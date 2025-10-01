@@ -66,13 +66,13 @@ document.querySelector("#splitBtn").addEventListener("click", () => {
   const status = document.getElementById(`status-${crntFrnd}`);
 
   if (yourExpense == frndExpense) {
-    status.textContent = `You and Your ${crntFrnd} are even`;
+    status.textContent = `Both ${crntFrnd} are even`;
     status.className = "text-orange-600 text-sm";
   } else if (yourExpense > frndExpense) {
-    status.textContent = `${crntFrnd} owes you ${yourExpense - frndExpense}`;
+    status.textContent = `${crntFrnd} owes you ${Math.abs(yourExpense - frndExpense)}`;
     status.className = "text-green-600 text-sm";
   } else {
-    status.textContent = `you owe ${crntFrnd} ${yourExpense - frndExpense}`;
+    status.textContent = `you owe ${crntFrnd} ${Math.abs(yourExpense - frndExpense)}`;
     status.className = "text-red-600 text-sm";
   }
 });
