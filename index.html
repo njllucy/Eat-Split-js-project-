@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eat & Split</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+  </head>
+  <body class="bg-orange-100 min-h-screen flex flex-col justify-center items-center">
+    <h1 class="text-4xl font-bold mb-5 text-red-700 animate-bounce font-poppins">Eat & Split</h1>
+
+    <div class="bg-orange-200 w-fit p-6 h-fit rounded-md flex justify-center gap-10">
+      <div id="friendsList">
+        <!-- add friend button  -->
+        <button
+          id="addFrnd"
+          class="px-4 py-2 rounded-lg bg-red-400 text-white font-bold hover:bg-red-600"
+        >
+          Add Friend
+        </button>
+
+        <!-- add form  -->
+        <div id="addForm" class="hidden bg-white p-6 rounded-lg shadow-lg mt-2">
+          <div class="mb-4">
+            <label class="flex items-center font-bold mb-2">
+              <span class="mr-2">👥</span> Friend name
+            </label>
+            <input id="name"
+              type="text"
+              class="w-full p-2 border rounded"
+              placeholder="Enter friend name"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="flex items-center font-bold mb-2">
+              <span class="mr-2">🖼️</span> Image URL
+            </label>
+            <input id="image"
+              type="text"
+              class="w-full p-2 border rounded"
+              value="https://i.pravatar.cc/44"
+            />
+          </div>
+          <button id="saveFriend"
+            class="w-full px-4 py-2 rounded-lg bg-red-400 text-white font-bold hover:bg-red-600"
+          >
+            Add
+          </button>
+          <button
+            id="closeBtn"
+            class="w-full px-4 py-2 rounded-lg bg-red-400 text-white font-bold hover:bg-red-600 mt-2"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div>
+        <!-- right side split form  -->
+        <div
+          id="billForm"
+          class="hidden w-[400px] bg-white p-6 rounded-lg shadow space-y-4"
+        >
+          <h2 class="text-xl font-bold text-red-700">Split a Bill</h2>
+          <input
+            id="billValue"
+            type="number"
+            placeholder="Bill value"
+            class="border px-2 py-1 w-full rounded"
+          />
+          <input
+            id="yourExpense"
+            type="number"
+            placeholder="Your expense"
+            class="border px-2 py-1 w-full rounded"
+          />
+          <input
+            id="friendExpense"
+            type="number"
+            placeholder="Friend's expense"
+            class="border px-2 py-1 w-full rounded"
+          />
+          <select id="payer" class="border px-2 py-1 w-full rounded">
+            <option value="you">You</option>
+            <option value="friend">Friend</option>
+          </select>
+          <button
+            id="splitBtn"
+            class="bg-red-400 text-white font-bold hover:bg-red-600 px-4 py-2 rounded"
+          >
+            Split Bill
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
