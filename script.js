@@ -61,18 +61,47 @@ savefriend.addEventListener("click", () => {
 document.querySelector("#splitBtn").addEventListener("click", () => {
   const billValue = +document.getElementById("billValue").value;
   const yourExpense = +document.getElementById("yourExpense").value;
-  const frndExpense = +document.getElementById("friendExpense").value;
+  const frndExpense = Math.abs(billValue - yourExpense);
   const payer = document.getElementById("payer").value;
   const status = document.getElementById(`status-${crntFrnd}`);
-
-  if (yourExpense == frndExpense) {
+  if (yourExpense === billValue) {
+    status.textContent = `${crntFrnd} owes you ${billValue / 2}`;
+    status.className = "text-green-600 text-sm";
+  } else if (yourExpense === frndExpense) {
     status.textContent = `Both ${crntFrnd} are even`;
     status.className = "text-orange-600 text-sm";
   } else if (yourExpense > frndExpense) {
-    status.textContent = `${crntFrnd} owes you ${Math.abs(yourExpense - frndExpense)}`;
+    status.textContent = `${crntFrnd} owes you ${yourExpense - frndExpense}`;
     status.className = "text-green-600 text-sm";
   } else {
-    status.textContent = `you owe ${crntFrnd} ${Math.abs(yourExpense - frndExpense)}`;
+    status.textContent = `You owe ${crntFrnd} ${frndExpense - yourExpense}`;
     status.className = "text-red-600 text-sm";
   }
+
+  //   if (yourExpense == frndExpense) {
+  //     status.textContent = `Both ${crntFrnd} are even`;
+  //     status.className = "text-orange-600 text-sm";
+  //   } else if (yourExpense > frndExpense) {
+  //     status.textContent = `${crntFrnd} owes you ${Math.abs(yourExpense - frndExpense)}`;
+  //     status.className = "text-green-600 text-sm";
+  //   } else if(yourExpense==billValue){
+  //      status.textContent = `${crntFrnd} owes you ${billValue/2}`;
+  //     status.className = "text-green-600 text-sm";
+  //   }
+  //   else {
+  //     status.textContent = `you owe ${crntFrnd} ${Math.abs(yourExpense - frndExpense)}`;
+  //     status.className = "text-red-600 text-sm";
+  //   }
+});
+
+const billValueInput = document.getElementById("billValue");
+const yourExpenseInput = document.getElementById("yourExpense");
+const frndExpenseInput = document.getElementById("friendExpense");
+yourExpenseInput.addEventListener("input", () => {
+  const billValue = +billValueInput.value || 0;
+  const yourExpense = +yourExpenseInput.value || 0;
+  let friendExpense = billValue - yourExpense;
+
+  if (friendExpense < 0) friendExpense = 0;
+  frndExpenseInput.value = friendExpense;
 });
