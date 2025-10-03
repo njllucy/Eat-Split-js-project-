@@ -6,7 +6,6 @@
     <title>Eat & Split</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    
   </head>
   <body class="bg-orange-100 min-h-screen flex flex-col justify-center items-center">
     <h1 class="text-4xl font-bold mb-5 text-red-700 animate-bounce font-poppins">Eat & Split</h1>
@@ -21,7 +20,7 @@
           Add Friend
         </button>
 
-        <!-- add form  -->
+        <!-- add friend form -->
         <div id="addForm" class="hidden bg-white p-6 rounded-lg shadow-lg mt-2">
           <div class="mb-4">
             <label class="flex items-center font-bold mb-2">
@@ -56,10 +55,11 @@
           </button>
         </div>
       </div>
-      <div>
-        <!-- right side split form  -->
+
+      <!-- split bill form -->
+      <form id="billForm">
         <div
-          id="billForm"
+          id="billBox"
           class="hidden w-[400px] bg-white p-6 rounded-lg shadow space-y-4"
         >
           <h2 class="text-xl font-bold text-red-700">Split a Bill</h2>
@@ -67,41 +67,40 @@
             id="billValue"
             type="number"
             min="0"
-            placeholder="Bill value"
-            class="border px-2 py-1 w-full rounded  appearance-none [&::-webkit-outer-spin-button]:appearance-none
-              [&::-webkit-inner-spin-button]:appearance-none
-              [&::-moz-appearance]:textfield"
+            required
+            value="0"
+            class="border px-2 py-1 w-full rounded appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-moz-appearance]:textfield"
           />
           <input
             id="yourExpense"
             type="number"
             min="0"
-            placeholder="Your expense"
-            class=" border px-2 py-1 w-full rounded appearance-none [&::-webkit-outer-spin-button]:appearance-none
-              [&::-webkit-inner-spin-button]:appearance-none
-              [&::-moz-appearance]:textfield"
-          />
+            value="0"
+            required
+            class="border px-2 py-1 w-full rounded appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-moz-appearance]:textfield"
+          /> 
+          <br>
+          <span class="error text-sm text-red-700" id="errormsg"></span> 
           <input
             id="friendExpense"
             min="0"
             type="number"
-            placeholder="Friend's expense"
-            class="border px-2 py-1 w-full rounded  appearance-none [&::-webkit-outer-spin-button]:appearance-none
-              [&::-webkit-inner-spin-button]:appearance-none
-              [&::-moz-appearance]:textfield"
+            readonly
+            value="0"
+            class="border px-2 py-1 w-full rounded appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-moz-appearance]:textfield"
           />
           <select id="payer" class="border px-2 py-1 w-full rounded">
             <option value="you">You</option>
             <option value="friend">Friend</option>
           </select>
           <button
-            id="splitBtn"
+            id="splitBtn" disabled
             class="bg-red-400 text-white font-bold hover:bg-red-600 px-4 py-2 rounded"
           >
             Split Bill
           </button>
         </div>
-      </div>
+      </form>
     </div>
 
     <script src="script.js"></script>
